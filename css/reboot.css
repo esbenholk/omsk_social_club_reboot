@@ -1,0 +1,248 @@
+
+:root {
+    --mobile_size: 1100px;
+    --reg_padding:  50px;
+}
+
+
+@font-face {
+	font-family: 'ABC Helveesti Spikes';
+	src: url('./fonts/ABCHelveestiSpikes-Regular-Trial.otf'); 
+	src: 
+		local('ABC Helveesti Spikes'),
+		local('ABC Helveesti Spikes'),
+		url('./fonts/ABCHelveestiSpikes-Regular-Trial.otf') 
+		format('opentype');
+}
+
+@font-face {
+	font-family: 'ArthemysDisplay';
+	src: url('./fonts/ArthemysDisplay-Regular.ttf'); 
+	src: 
+		local('ArthemysDisplay'),
+		local('ArthemysDisplay'),
+		url('./fonts/ArthemysDisplay-Regular.ttf') 
+		format('truetype');
+}
+
+
+body {
+
+    background-color: white;
+    margin: 0px;
+    color: black;
+
+    font-family: ABC Helveesti Spikes;
+
+    font-size:28px;
+
+}
+
+p{
+    font-family: ArthemysDisplay;
+  
+}
+  
+canvas {
+    background-color: #444444;
+    border: 0px solid #444444;
+    -webkit-filter: grayscale(90%) brightness(150%) blur(10px); 
+  filter: grayscale(90%) brightness(150%) blur(10px);
+
+  width: 100%;
+  height: 100%;
+  position: fixed;
+
+  top:50%;
+  left:50%;
+  transform:translateX(-50%) translateY(-50%);
+  z-index: -99999;
+}
+
+#logo{
+    margin-top: 50px;
+    width: 45%;
+    justify-self: center;
+}
+#logo img{
+  max-width: 100%;
+  object-fit: contain;
+}
+
+
+#header_container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.header_link {
+   font-family: ABC Helveesti Spikes;
+   /* outline: #4b4c56; */
+   -webkit-text-stroke-width: 1px;
+   -webkit-text-stroke-color: #4b4c56;
+   color: #a0a3b9;
+   font-size: 22px;
+   padding: 30px;
+}
+
+.header_link.right {
+    position: fixed;
+    top: 0;
+    right: 0;
+ }
+
+ .header_link.left {
+    position: fixed;
+    top: 0;
+    left: 0;
+ }
+
+.project_title{
+    Font: Art Dystopia;
+    Outline: #fab267;
+    color: #e48fcf;
+
+}
+
+
+.centering{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+}
+
+
+.container{
+    padding: var(--reg_padding);
+    padding-left: 300px;
+    padding-right: 300px;
+    padding-bottom: 700px;
+
+}
+/* grid */
+
+a{
+    font-family: ABC Helveesti Spikes;
+    /* outline: #4b4c56; */
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: #4b4c56;
+    color: #a0a3b9;
+    font-size: 22px;
+    text-decoration: none;
+
+} ul{
+    max-width: 1450px;
+    left: 50%;
+    transform: translate(0, 0);
+    display: flex;
+    align-content: space-between;
+    justify-content: center;
+    padding: var(--reg_padding);
+    flex-wrap: wrap;
+    top: 0;
+    gap: 50px 40px; 
+} ul a{
+    display: block;
+    text-align: center;
+    width: 20%;
+} ul a li{
+    display: flex;
+    flex-direction:column;
+    justify-content: space-between;
+    text-align: center;
+    width: 100%;
+    position: relative;
+    height: 100%;
+} ul a li div{
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+} ul li img{
+    width: 100%;
+    -webkit-filter: blur(0px);
+	filter: blur(0px);
+	-webkit-transition: .3s ease-in-out;
+	transition: .3s ease-in-out;
+} ul li img:hover{
+        -webkit-filter: blur(20px);
+        filter: blur(20px);
+} ul li span{
+    width: 100%;
+    margin-top: 10px;
+    position: relative;
+    bottom:0;
+    text-decoration: none;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: center;
+}
+
+
+
+
+@media only screen and (max-device-width: 1100px) {
+    #logo{
+        margin-top: 50px;
+        width: 90%;
+        justify-self: center;
+    }
+
+    .header_link {
+        padding: 20px;
+     }
+
+     ul a{
+        display: block;
+        text-align: center;
+        width: 40%;
+    }
+    .container,
+    ul {
+        max-width: 100%;
+        padding-left: 10px;
+        padding-right: 10px;
+
+    }
+    p{
+        font-size: 17px;
+    }
+
+    .header_link.right {
+        position: absolute;
+        top: 0;
+        right: 0;
+     }
+
+     .header_link.left {
+        position: absolute;
+        top: 0;
+        left: 0;
+     }
+    
+    
+}
+@media only screen and (max-device-width: 300px) {
+    #logo{
+        margin-top: 60px;
+        width: 80%;
+        justify-self: center;
+    }
+
+    a{
+        font-family: ABC Helveesti Spikes;
+        /* outline: #4b4c56; */
+        -webkit-text-stroke-width: 1px;
+        -webkit-text-stroke-color: #4b4c56;
+        color: #a0a3b9;
+        font-size: 14px;
+        text-decoration: none;
+    
+    }
+    
+    
+}

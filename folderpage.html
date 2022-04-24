@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>00:00:00</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+
+    <link rel="stylesheet" href="./css/reboot.css">
+    <script src="https://code.createjs.com/1.0.0/createjs.min.js"></script>
+
+  </head>
+  <body onload="show(); start();">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+
+    <canvas id="display"></canvas>
+    <div id="header_container">
+        
+        <a id="logo" href="https://www.punkisdada.com/about/" > 
+            <img src="./reboot_img/logo_omsk.png"/>
+        </a>
+
+         <a class="header_link right" href="https://www.punkisdada.com/about/" >ABOUT</a>
+    </div>
+
+    <div id="titt" style="display:none"></div>
+    <span id="time" style="display:none"></span>
+    
+
+
+    <div class="centering">
+        <ul>
+
+        </ul>    
+
+        <!-- [[Wayfinder? &startId=`2` &rowTpl=`w-row`]] -->
+
+    </div>
+
+
+
+
+
+
+
+
+
+  </body>
+  <script src="./js/perlinnoise_canvas.js"></script>
+
+  <script>
+
+
+    let image_urls = ["./reboot_img/folder_icons/folder_icon_1-min.png", "./reboot_img/folder_icons/folder_icon_2-min.png", "./reboot_img/folder_icons/folder_icon_3-min.png", "./reboot_img/folder_icons/folder_icon_4-min.png"]
+    
+
+    // /for testing purposes, creates a false project archive of X amount
+    for (let index = 0; index < 30; index++) {
+ 
+        $('ul').prepend('<a href="the-wet-altar"><li><div><img src=' + image_urls[Math.floor(Math.random() * 4)]+ '></div><span>The Wet Altar</span></li></a>')
+
+        
+    }
+    // $('ul').prepend('<a href="the-wet-altar"><li><img src=' + image_urls[Math.floor(Math.random() * 4)]+ '><span>The Wet Altar</span></li></a>')
+
+
+
+
+    var text = "";
+    $('a').mouseover(function(){
+    text =  $(this).find('span').text();
+    $(this).find('span').attr('title', text)
+    $(this).find('span').text('X')
+
+    
+
+
+
+    })
+    $('a').mouseout(function(){
+    textr =  $(this).find('span').attr('title')
+    
+    $(this).find('span').text(textr)
+    })
+
+
+
+    var	clsStopwatch = function() {
+            // Private vars
+            var	startAt	= 0;	// Time of last start / resume. (0 if not running)
+            var	lapTime	= 0;	// Time on the clock when last stopped in milliseconds
+
+            var	now	= function() {
+                    return (new Date()).getTime(); 
+                }; 
+    
+            // Public methods
+            // Start or resume
+            this.start = function() {
+                    startAt	= startAt ? startAt : now();
+                };
+
+            // Stop or pause
+            this.stop = function() {
+                    // If running, update elapsed time otherwise keep it
+                    lapTime	= startAt ? lapTime + now() - startAt : lapTime;
+                    startAt	= 0; // Paused
+                };
+
+            // Reset
+            this.reset = function() {
+                    lapTime = startAt = 0;
+                };
+
+            // Duration
+            this.time = function() {
+                    return lapTime + (startAt ? now() - startAt : 0); 
+                };
+        };
+
+    var x = new clsStopwatch();
+    var $time;
+    var clocktimer;
+
+    function pad(num, size) {
+        var s = "0000" + num;
+        return s.substr(s.length - size);
+    }
+
+    function formatTime(time) {
+        var h = m = s = ms = 0;
+        var newTime = '';
+
+        h = Math.floor( time / (60 * 60 * 1000) );
+        time = time % (60 * 60 * 1000);
+        m = Math.floor( time / (60 * 1000) );
+        time = time % (60 * 1000);
+        s = Math.floor( time / 1000 );
+        ms = time % 1000;
+
+        newTime =  pad(m, 2) + ':' + pad(s, 2) + ':' + pad(ms, 2);
+        return newTime;
+    }
+
+    function show() {
+        $time = document.getElementById('time');
+        update();
+
+    }
+
+    function update() {
+        $time.innerHTML = formatTime(x.time());
+        document.title = $time.innerHTML;
+        
+    }
+
+    function start() {
+        clocktimer = setInterval("update()", 1);
+        x.start();
+    }
+
+    window.location.hash = ".·'·..·'·..·'·..·'·..·'·..·'·."; 
+
+  </script>
+</html>
+
