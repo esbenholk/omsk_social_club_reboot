@@ -25,29 +25,65 @@
 		format('truetype');
 }
 
+@font-face {
+	font-family: 'ArtDystopia';
+	src: url('./fonts/ArtDystopia.ttf'); 
+	src: 
+		local('ArtDystopia'),
+		local('ArtDystopia'),
+		url('./fonts/ArtDystopia.ttf') 
+		format('truetype');
+}
+
+h1,
+h2{
+    text-align: center;
+}
+
+.subheadline{
+    margin: 0;
+}
+
+
+.flexcolumn{
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+}
+
+.flexrow{
+    display: flex;
+    flex-direction: row;
+    justify-items: center;
+
+    justify-content: center;
+}
+
+.column{
+    max-width: 50%;
+}
+.column:first-of-type{
+    margin-right: 50px;
+}
+
 
 body {
-
     background-color: white;
     margin: 0px;
     color: black;
-
     font-family: ABC Helveesti Spikes;
-
     font-size:28px;
-
 }
 
 p{
-    font-family: ArthemysDisplay;
-  
+    font-family: ArthemysDisplay; 
 }
   
 canvas {
     background-color: #444444;
     border: 0px solid #444444;
-    -webkit-filter: grayscale(90%) brightness(150%) blur(10px); 
-  filter: grayscale(90%) brightness(150%) blur(10px);
+    -webkit-filter: grayscale(90%) brightness(150%) blur(10px) sepia(10%); 
+  filter: grayscale(90%) brightness(150%) blur(10px) sepia(10%);
 
   width: 100%;
   height: 100%;
@@ -60,14 +96,73 @@ canvas {
 }
 
 #logo{
-    margin-top: 50px;
+    margin-top: 30px;
     width: 45%;
     justify-self: center;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 #logo img{
   max-width: 100%;
   object-fit: contain;
 }
+
+.work_logo{
+    width: 50%;
+}
+
+
+.headline_container{
+    position: relative;
+    width: 100%;
+
+   
+
+}
+.headline_container h1{
+    text-align: center;
+    min-width: 100%;
+    margin: 0;
+
+}
+
+
+.headline_container h1:first-of-type{
+    font-family: ArtDystopia;
+    -webkit-text-stroke-width: 1px;
+    letter-spacing: 15px;
+    margin-top: 5px;
+    -webkit-text-stroke-color: #fab267;
+    color: #e48fcf;
+    font-size: 70px;
+    filter: blur(1px);
+    position: relative;
+    line-height: 75px;
+
+ 
+}
+
+.headline_container h1{
+   font-family: ABC Helveesti Spikes;
+    font-weight: 100;
+    letter-spacing: 10px;
+    text-shadow:
+    -2px -1px 0 #3f3f3f,  
+     2px -1px 0 #3f3f3f,
+     -2px 1px 0 #3f3f3f,
+      2px 1px 0 #3f3f3f;
+    color: #e2e2e2;
+    font-size: 70px;
+    line-height: 75px;
+
+    font-stretch:ultra-condensed;
+    position: absolute;
+    top: 0;
+}
+
+
 
 
 #header_container{
@@ -183,6 +278,163 @@ a{
 }
 
 
+.frame{
+    width: 600px;
+    position: relative;
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    
+}
+.frame img{
+   max-width: 100%;
+   object-fit: contain;
+}
+.frame-border{
+    z-index: 99999;
+
+    pointer-events: none;
+
+}
+.swiper{
+    position: absolute !important;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 35%;
+    width: 90%;
+    height: 80% !important;
+}
+
+.swiper-button-next::after, .swiper-button-prev::after {
+    content: "" !important;
+}
+
+  
+.swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background-image: url("../reboot_img/frame-elements/frame-bg.jpg");
+
+    /* Center slide text vertically */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+  }
+
+  .slider-image-in-frame{
+      display: flex;
+      position: relative;
+      height: 100%;
+      max-width: 100%;
+  }
+  .swiper-slide img {
+    display: block;
+    height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+  }
+  .leftborder{
+      margin-left: -4px;
+      position: absolute;
+      left: 0;
+  }
+  .rightborder{
+    margin-right: -4px;
+    position: absolute;
+    right: 0;
+    top:0;
+}
+.topborder{
+    margin-bottom: -3px;
+    position: absolute;
+    top: -50%;
+    left: 50%;
+    transform: rotate(90deg);
+
+}
+.bottomborder{
+  margin-top: -3px;
+  position: absolute;
+  bottom: -50%;
+  left: 50%;
+  transform: rotate(-90deg);
+
+}
+
+.content{
+    position: relative;
+    max-width: 600px;
+    border: 3px solid #7c7d8e;
+    background-color: rgba(195,196,199, 0.5);
+    outline: solid 3px #66667a;
+    outline-offset: 0px;
+    border-radius: 35px;
+    -moz-box-shadow:    inset 0 0 5px #767689;
+    -webkit-box-shadow: inset 0 0 5px #767689;
+    box-shadow:         inset 0 0 5px #767689;
+}
+.framecorner{
+    position: absolute;
+    max-width: 17%;
+}
+.topleft{
+    top: 0;
+    left: 0;
+    transform: translate(-20%,-20%);
+}
+.topright{
+    top: 0;
+    right: 0;
+    transform: scaleX(-1) translate(-20%,-20%);
+}
+.bottomright{
+    bottom:0;
+    right:0;
+    transform: scaleX(-1) scaleY(-1) translate(-20%,-20%);
+
+}
+.bottomleft{
+    bottom: 0; 
+    left:0;
+    transform: scaleY(-1) translate(-20%,-20%);}
+.sideright{
+    right: 0;
+    transform: scaleX(-1) translate(-20%, -65%);
+}
+.sideleft{
+    left: 0;
+    transform: scaleX(1) translate(-20%, -65%);
+}
+.smaller{
+    max-width: 14%;
+}
+
+.content div{
+ padding: 20px;
+ position: relative;
+}
+.content div p{
+    font-size: 15px;
+}
+.links,
+.credits{
+    border-top: 3px solid #7c7d8e;
+
+
+    -moz-box-shadow:    inset 0 3px #767689;
+    -webkit-box-shadow: inset 0 3px #767689;
+    box-shadow:        inset 0 3px #767689;
+}
 
 
 @media only screen and (max-device-width: 1100px) {
@@ -223,6 +475,84 @@ a{
         top: 0;
         left: 0;
      }
+
+
+     .headline_container h1:first-of-type{
+        font-family: ArtDystopia;
+        -webkit-text-stroke-width: 1px;
+        letter-spacing: 15px;
+        padding-top: 15px;
+        -webkit-text-stroke-color: #fab267;
+        color: #e48fcf;
+        font-size: 60px;
+        filter: blur(1px);
+        position: relative;
+        line-height: 80px;
+    
+     
+    }
+    
+    .headline_container h1{
+       font-family: ABC Helveesti Spikes;
+        font-weight: 100;
+        letter-spacing: 5px;
+        text-shadow:
+        -2px -1px 0 #3f3f3f,  
+         2px -1px 0 #3f3f3f,
+         -2px 1px 0 #3f3f3f,
+          2px 1px 0 #3f3f3f;
+        color: #e2e2e2;
+        font-size: 60px;
+        font-stretch:ultra-condensed;
+        position: absolute;
+        top: 0;
+    }
+
+    .frame{
+        width: 100%;
+ 
+    }
+    .flexrow{
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+    }
+    .column{
+        max-width: 90%;
+    }
+    .column:first-of-type{
+        margin-right: 0px;
+    }
+
+    .swiper{
+        position: absolute !important;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border-radius: 35%;
+        width: 85%;
+        height: 90% !important;
+    }
+
+    .sideright.smaller{
+        right: 0;
+        transform: scaleX(-1) translate(-20%, -70%);
+    }
+    .sideleft.smaller{
+        left: 0;
+        transform: scaleX(1) translate(-20%, -70%);
+    }
+
+    .sideright{
+        right: 0;
+        transform: scaleX(-1) translate(-20%, -73%);
+    }
+    .sideleft{
+        left: 0;
+        transform: scaleX(1) translate(-20%, -73%);
+    }
+    
     
     
 }

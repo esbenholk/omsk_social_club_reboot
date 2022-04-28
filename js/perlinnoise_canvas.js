@@ -14,7 +14,24 @@ window.addEventListener('resize', function(event){
 
     c.style.width = newWidth;
     c.style.height = newHeight;
+
+    if($('.frame-border')){
+        setFrameSRC();
+    }
 });
+
+setFrameSRC();
+
+
+function setFrameSRC(){
+    console.log("changes frame");
+    if(window.innerWidth < 1100){
+        $('.frame-border').attr("src","./reboot_img/frame-elements/frame_mobile.png");
+    } else {
+        $('.frame-border').attr("src","./reboot_img/frame-elements/frame.png");
+
+    }
+};
 
 function run(){
     let stage = new createjs.Stage("display"); 
