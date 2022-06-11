@@ -1,17 +1,14 @@
 $(" .module").each(
+
+
     function(){
-        var a=$(this),
-        e=a.find("img").attr("data-pdf"),
-        t=e.split(".");
+        var a=$(this), e=a.find("img").attr("data-pdf"), t=e.split("."); "pdf"==t[1]&&(a.find("img").wrap('<a href="'+e+'"></a>'),
         
-        "pdf"==t[1]&&(a.find("img").wrap('<a href="'+e+'"></a>'),
+        a.css("background","none"));
+        var i=a.attr("data-vid"), l=a.attr("data-vid").split("m/");
         
-        a.css("background","none"));var i=a.attr("data-vid"),
-        
-        l=a.attr("data-vid").split("m/");
-        
-        if(""!==i){var o=l[1];
-            
+        if(""!==i){
+            var o=l[1];
             a.find("img").remove(),
         
                 a.find(".i-w").append('<div class="translayer"></div><iframe class="vimeo" src="https://player.vimeo.com/video/'+o+'?autoplay=1&loop=1" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>')
