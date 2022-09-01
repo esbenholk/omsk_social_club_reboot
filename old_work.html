@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+       <title>[[*pagetitle]]</title>
+       <meta name="viewport" content="width=device-width, initial-scale=1">
+       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+       <script src='assets/js/anchorme.min.js'></script>
+     
+<link rel="stylesheet" href="assets/css/joel.css">
+     <script>$(document).ready(function(){
+var t = "[[*pagetitle:strip:htmlent]]";
+var d = "[[*desc:strip:htmlent]]";
+var ds = d.split(' ');
+var blank = 0;
+$(document).mousemove(function(event){
+blank++;
+if (blank % 8 === 0){
+  if(ds.length !== 0){
+           $("body").append('<div class="dot" style="left:'+event.pageX+'px;top:'+event.pageY+'px;" >'+ds[0]+'</div>');
+        ds.splice(0,1)  
+      }   
+}
+    });
+    
+    $('img').mouseenter(function(event){
+   $(this).parent().parent().find('.name').show();
+   $('.module').mouseleave(function(){
+       $(this).find('.name').hide();
+})
+})
+$('.i-w iframe').parent().find('img').hide();
+
+});
+
+
+var	clsStopwatch = function() {
+		// Private vars
+		var	startAt	= 0;	// Time of last start / resume. (0 if not running)
+		var	lapTime	= 0;	// Time on the clock when last stopped in milliseconds
+
+		var	now	= function() {
+				return (new Date()).getTime(); 
+			}; 
+ 
+		// Public methods
+		// Start or resume
+		this.start = function() {
+				startAt	= startAt ? startAt : now();
+			};
+
+		// Stop or pause
+		this.stop = function() {
+				// If running, update elapsed time otherwise keep it
+				lapTime	= startAt ? lapTime + now() - startAt : lapTime;
+				startAt	= 0; // Paused
+			};
+
+		// Reset
+		this.reset = function() {
+				lapTime = startAt = 0;
+			};
+
+		// Duration
+		this.time = function() {
+				return lapTime + (startAt ? now() - startAt : 0); 
+			};
+	};
+
+var x = new clsStopwatch();
+var $time;
+var clocktimer;
+
+function pad(num, size) {
+	var s = "0000" + num;
+	return s.substr(s.length - size);
+}
+
+function formatTime(time) {
+	var h = m = s = ms = 0;
+	var newTime = '';
+
+	h = Math.floor( time / (60 * 60 * 1000) );
+	time = time % (60 * 60 * 1000);
+	m = Math.floor( time / (60 * 1000) );
+	time = time % (60 * 1000);
+	s = Math.floor( time / 1000 );
+	ms = time % 1000;
+
+	newTime =  pad(m, 2) + ':' + pad(s, 2) + ':' + pad(ms, 2);
+	return newTime;
+}
+
+function show() {
+	$time = document.getElementById('time');
+	update();
+
+}
+
+function update() {
+	$time.innerHTML = formatTime(x.time());
+	document.title = $time.innerHTML;
+	
+}
+
+function start() {
+	clocktimer = setInterval("update()", 1);
+	x.start();
+}
+</script>
+</head>
+
+
+
+
+<body onload="show(); start();" style="background:url('[[*PageBackground]]') no-repeat center center fixed; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover;">
+<div id="titt" style="display:none"></div>
+<span id="time" style="display:none"></span>
+
+
+
+<div class="back"><a href="folders.html"><img src="img/ball.png"></a></div>
+<header>[[*pagetitle]]_[[*gallery]]_[[*year]] </header>
+<h1>[[*Blurb]]</h1>
+<ul>[[*projectlinks]]</ul>
+<div id="container">
+    
+<p class="spit">[[*desc]]</p>
+[[getImageList?
+    &tvname=`Works`
+    &tpl=`work-module-tpl`]]
+</div>
+<script src='assets/js/joel.js'></script>
+
+</body>
+</html>

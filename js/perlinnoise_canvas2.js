@@ -1,15 +1,16 @@
 $(function() {
     setFrameSRC();
     console.log("sets display");
-
-
-
-  
-      
+ 
 });
 
 function myFunction(event) {
-    console.log("clicks", event.target.parentElement);
+
+    let resting_height = 100/ $(".content_chapter").length + "%";
+    let minimised_height = 40/( $(".content_chapter").length - 1 )+ "%";
+
+    console.log(minimised_height, $(".content_chapter").length );
+ 
     var dots = event.target.parentElement.getElementsByClassName("dots")[0];
     var moreText = event.target.parentElement.getElementsByClassName("more")[0];
     var btnText = event.target.parentElement.getElementsByClassName("myBtn")[0];
@@ -35,7 +36,9 @@ function myFunction(event) {
                 btnText2.style.marginTop = "1em";
             } 
 
-            element.style.height = "15%";
+            element.style.height = minimised_height;
+            element.style.paddingTop = "15px";
+
             element.getElementsByClassName("textcontainer")[0].style.display = "none";
             element.getElementsByClassName("content_chapter_headline")[0].style.marginBottom = "0";
             btnText2.style.margin = "0";
@@ -58,7 +61,9 @@ function myFunction(event) {
                 var dots2 = element.getElementsByClassName("dots")[0];
                 var btnText2 = element.getElementsByClassName("myBtn")[0];
                 if (dots2.style.display != "none") {
-                    element.style.height = "33%";
+                    element.style.height = resting_height;
+                    element.style.paddingTop = "27px";
+
                     element.getElementsByClassName("textcontainer")[0].style.display = "block";
                     element.getElementsByClassName("content_chapter_headline")[0].style.marginBottom = "1em";
                     btnText2.style.marginTop = "1em";
@@ -72,7 +77,8 @@ function myFunction(event) {
             }   
         }
    
-        event.target.parentElement.style.height = "33%";
+        event.target.parentElement.style.height = resting_height;
+        event.target.parentElement.style.paddingTop = "27px";
         btnText.style.marginTop = "1em";
                 
 
@@ -88,9 +94,11 @@ function myFunction(event) {
         btnText.innerHTML = "LESS";
         btnText.style.marginTop = "1em";
 
-        moreText.style.display = "inline";
+        moreText.style.display = "inline-flex";
         event.target.parentElement.getElementsByClassName("content_chapter_headline")[0].style.marginBottom = "1em";
-        event.target.parentElement.style.height = "70%";
+        event.target.parentElement.style.height = "60%";
+        event.target.parentElement.style.paddingTop = "27px";
+
         event.target.parentElement.getElementsByClassName("textcontainer")[0].style.display = "block";
 
 
@@ -148,7 +156,7 @@ function handleTick(e){
     for(let i = 0; i < c.width*c.height; i++){
         let x = i % c.width;
         let y = (i-x)/c.width;
-        let density = 6/100; //size
+        let density = 3/100; //size
         let offsetRed = 24;
         let offsetGreen = 0;
         let offsetBlue = 0.5;
